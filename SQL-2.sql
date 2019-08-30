@@ -1,0 +1,64 @@
+/*CARA KONEKSI MYSQL via TERMINAL*/
+cd\xampp\mysql\bin;
+>mysql -u root -p;
+
+/*CARA MENAMPILKAN DATABASE */
+SHOW DATABASE;
+
+/*CARA MEMBUAT DATABASE */
+CREATE DATABASE `11rpl1_db`;
+
+/*CARA MEMBUAT TABLE*/
+CREATE TABLE `siswa` (
+ id_siswa INT(11) PRIMARY KEY AUTO_INCREMENT,
+ nis CHAR(10),
+ nama_lengkap VARCHAR(255),
+ jk CHAR(1),
+ tmp_lahir VARCHAR(255),
+ tgl_lahir DATE,
+ alamat TEXT,
+ no_hp CHAR(15),
+ tanggal_entri DATETIME
+ );
+
+/*CARA MENAMPILAN TABLE*/
+SHOW TABLES;
+
+/*CARA MENAMPILKAN SPESIFIKASI TABLE*/
+DESCRIBE `siswa`;
+
+/*CARA MENAMBAHKAN RECORD KE TABLE*/
+INSERT INTO `siswa` SET
+ id_siswa = NULL,
+ nis = '10801050',
+ nama_lengkap = 'IHSAN FAJAR RAMADHAN',
+ jk = 'L',
+ tmp_lahir = 'SUBANG',
+ tgl_lahir = '2002-11-27',
+ alamat = 'DUSUN PATROL',
+ no_hp = '089xxxxxxxxx',
+ tanggal_entri = NOW();
+
+ /*CARA UNTUK MENAMPILKAN SELURUH DATA TABLE*/
+ SELECT *FROM `siswa`;
+
+ /*CARA MENAMPILKAN DATA DENGAN KONDISI TERTENTU*/
+ SELECT *FROM `siswa` WHERE jk= 'P';
+
+ /*CARA MENAMPILKAN BEBERAPA/BATAS RECORD PADA TABLE*/
+ SELECT *FROM `siswa` LIMIT 3,5;
+
+ /*CARA MENAMPILKAN/MENGURUTKAN BERDASARKAN FIELD TERTENTU*/
+ SELECT *FROM `siswa` ORDER BY tgl_lahir DESC;
+
+ /*CARA MENAMPILKAN FIELD MENGGUNAKN FUNCTION*/
+ SELECT UPPER(alamat) FROM `siswa`;
+
+ /*CARA MENAMPILKAN BEBERAPA FIELD dengan KONDISI TERTENTU*/
+ SELECT nama_lengkap,tmp_lahir,tgl_lahir FROM `siswa` WHERE YEAR(tgl_lahir)='2002';
+
+ /*CARA MEMPERBARUI DATA PADA TABLE*/
+ UPDATE `siswa` SET tmp_lahir= 'BANDUNG',tgl_lahir='2003-01-01' WHERE id_siswa='1';
+
+ /*CARA MENGHAPUS DATA/RECORD*/
+ DELETE FROM `siswa` WHERE id_siswa='1';
